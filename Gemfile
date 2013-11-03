@@ -27,7 +27,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 group :development, :test do
-  gem 'sqlite3'
+  gem 'mysql2'
 end
 
 group :doc do
