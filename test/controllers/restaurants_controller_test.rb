@@ -21,6 +21,13 @@ class RestaurantsControllerTest < ActionController::TestCase
     assert_equal restaurant, assigns(:restaurant)
   end
 
+
+  test "#show error with an invalid id" do
+    assert_raises ActiveRecord::RecordNotFound do
+      get :show, id: 'does-not-exist'
+    end
+  end
+
   test "#new should display a blank, unsaved restaurant" do
     get :new
 
