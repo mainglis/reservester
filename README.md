@@ -19,3 +19,12 @@ Move the README from being rdoc to markdown with:
 ```
 $ git mv README.rdoc README.md
 ```
+
+=== Part 2 ===
+
+Deployed with:
+
+```
+$ git push heroku master
+```
+
