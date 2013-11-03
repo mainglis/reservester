@@ -30,6 +30,12 @@ gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 
+gem 'dotenv-rails'
+
+gem 'fog'
+gem 'rmagick'
+gem 'carrierwave'
+
 group :development, :test do
   gem 'mysql2'
 end
