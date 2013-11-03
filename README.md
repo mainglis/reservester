@@ -35,3 +35,19 @@ Generated the development and test databases with:
 ```
 $ rake db:create
 ```
+
+== Lab 2 ==
+
+=== Part 1 ===
+
+Generated the blank resource with:
+
+```
+$ rails g resource restaurant
+```
+
+Ran the database migration with:
+
+```
+$ rake db:migrate
+```
