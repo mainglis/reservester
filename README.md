@@ -28,3 +28,10 @@ Deployed with:
 $ git push heroku master
 ```
 
+=== Part 3 ===
+
+Generated the development and test databases with:
+
+```
+$ rake db:create
+```
