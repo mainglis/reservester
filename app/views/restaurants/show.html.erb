@@ -1,0 +1,13 @@
+<h1><%= @restaurant.name %></h1>
+
+<p><%= @restaurant.description %></p>
+
+<dl>
+  <dt>Phone</dt><dd><%= @restaurant.phone %>
+  <dt>Address</dt><dd><%= @restaurant.address %>
+</dl>
+
+<ul>
+  <li><%= link_to 'Edit', edit_restaurant_path(@restaurant) %></li>
+  <li><%= link_to 'Remove', restaurant_path(@restaurant), method: :delete %></li>
+</ul>
