@@ -1,14 +1,23 @@
-<h1>
-  Restaurants
-  <span class="pull-right">
-    <%= link_to new_restaurant_path, class: 'btn btn-default' do %>
-      <i class="icon-plus-sign"></i> Add a Restaurant
-    <%- end %>
-  </span>
-</h1>
+<div class="row">
+  <h1>
+    Restaurants
+    <span class="pull-right">
+      <%= link_to new_restaurant_path, class: 'btn btn-default' do %>
+        <i class="icon-plus-sign"></i> Add a Restaurant
+      <%- end %>
+    </span>
+  </h1>
+</div>
 
-<ul>
-<%- @restaurants.each do |restaurant| %>
-  <li><%= link_to restaurant.name, restaurant %></li>
-<%- end %>
+<ul class="thumbnails">
+  <%- @restaurants.each do |restaurant| %>
+    <li class="span3">
+      <%= link_to restaurant do %>
+        <div class="thumbnail">
+          <img src="<%= restaurant.photo.thumbnail.url %>" alt="">
+          <h3><%= restaurant.name %></h3>
+        </div>
+      <%- end %>
+    </li>
+  <%- end %>
 </ul>

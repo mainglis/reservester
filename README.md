@@ -72,3 +72,18 @@ Overwrote the application.html.erb:
 $ mv app/views/layouts/fluis.html.erb
 app/views/layouts/application.html.erb
 ```
+
+=== Part 3 ===
+
+Generated a Photo Uploader:
+
+```
+$ rails generate uploader Photo
+```
+
+Generated the database migration to add a photo column:
+
+```
+$ rails g migration AddPhotoToRestaurants
+```
+
