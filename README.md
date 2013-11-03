@@ -1,6 +1,6 @@
-== Lab 1 ==
+## Lab 1 ##
 
-=== Part 1 ===
+### Part 1 ###
 
 Generated the project with:
 
@@ -20,7 +20,7 @@ Move the README from being rdoc to markdown with:
 $ git mv README.rdoc README.md
 ```
 
-=== Part 2 ===
+### Part 2 ###
 
 Deployed with:
 
@@ -28,7 +28,7 @@ Deployed with:
 $ git push heroku master
 ```
 
-=== Part 3 ===
+### Part 3 ###
 
 Generated the development and test databases with:
 
@@ -36,9 +36,9 @@ Generated the development and test databases with:
 $ rake db:create
 ```
 
-== Lab 2 ==
+## Lab 2 ##
 
-=== Part 1 ===
+### Part 1 ###
 
 Generated the blank resource with:
 
@@ -52,7 +52,7 @@ Ran the database migration with:
 $ rake db:migrate
 ```
 
-=== Part 2 ===
+### Part 2 ###
 
 Installed Twitter Bootstrap with Less assets:
 
@@ -73,7 +73,7 @@ $ mv app/views/layouts/fluis.html.erb
 app/views/layouts/application.html.erb
 ```
 
-=== Part 3 ===
+### Part 3 ###
 
 Generated a Photo Uploader:
 
