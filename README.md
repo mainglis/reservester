@@ -51,3 +51,24 @@ Ran the database migration with:
 ```
 $ rake db:migrate
 ```
+
+=== Part 2 ===
+
+Installed Twitter Bootstrap with Less assets:
+
+```
+$ rails generate bootstrap:install less
+```
+
+Generated the base layout file:
+
+```
+$ rails g bootstrap:layout fluid
+```
+
+Overwrote the application.html.erb:
+
+```
+$ mv app/views/layouts/fluis.html.erb
+app/views/layouts/application.html.erb
+```
