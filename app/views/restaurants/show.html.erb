@@ -27,7 +27,7 @@
   <img src="<%= @restaurant.photo.url %>" />
 </p>
 
-
+<p><img src="http://maps.googleapis.com/maps/api/staticmap?center=New+York,NY&zoom=13&size=600x300&AIzaSyAizj5DwSf-rldrjdmP0pYjaerIaKeyHvI=API_KEY"></p>
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Remove', restaurant_path(@restaurant), method: :delete %>
