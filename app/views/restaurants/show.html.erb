@@ -21,10 +21,13 @@
   <%= @restaurant.description %>
 </p>
 
+<!-- Update the Restaurant Show view to display the masthead -->
 <p>
   <strong>Photo:</strong>
   <img src="<%= @restaurant.photo.url %>" />
 </p>
+
+
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Remove', restaurant_path(@restaurant), method: :delete %>
