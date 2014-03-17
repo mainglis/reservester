@@ -32,6 +32,7 @@
     <%= f.label :photo %><br>
     <%= image_tag(@restaurant.photo_url) if @restaurant.photo? %>
     <%= f.file_field :photo %>
+    <%= f.hidden_field :photo_cache %>
   </div>
   <div class="actions">
     <%= f.submit %>

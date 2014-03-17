@@ -7,8 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<ul class="hmenu">
+  <%= render 'devise/menu/registration_items' %>
+  <%= render 'devise/menu/login_items' %>
+</ul>
 
 <%= yield %>
+
+<!-- You can copy Devise views (for customization) to your app by running:
+rails g devise:views -->
 
 </body>
 </html>

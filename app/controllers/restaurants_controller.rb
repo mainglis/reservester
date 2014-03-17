@@ -37,7 +37,7 @@ end
 private
 
 def restaurant_params
-params.require(:restaurant).permit(:name, :description, :phone_number, :address, :photo)
+params.require(:restaurant).permit(:name, :description, :phone_number, :address)
 end
 
 # def photo
