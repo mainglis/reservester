@@ -26,5 +26,9 @@
 </table>
 
 <br>
+<!-- Update the views to only display to logged in Owners: a. the New Restaurant path to any Owner -->
+<% if owner_signed_in? %> 
+  <%= link_to 'New Restaurant', new_restaurant_path %>
+<% end %> 
 
-<%= link_to 'New', new_restaurant_path %>
+

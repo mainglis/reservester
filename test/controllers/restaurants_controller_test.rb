@@ -4,6 +4,10 @@ class RestaurantsControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end
+# def Setup
+#   @current_user = fixture current user
+# end
+
 test "should get index" do
     get :index
     assert_response :success
@@ -15,13 +19,12 @@ test "should get new" do
     assert_response :success
 end
 
-test "should create restaurant" do
-  assert_difference('Restaurant.count') do
-    post :create, restaurant: {name: 'Some name'}
+
+test "should get create" do
+    get :create, restaurant: {name: "Piccos", owner_id: "11"}
+      # @current_user_id} is the ending if you uncomment the def Setup metnod above
+    assert_response :redirect
   end
- 
-  assert_redirected_to post_path(assigns(:restaurant))
-end
 
 test "should edit" do
 end

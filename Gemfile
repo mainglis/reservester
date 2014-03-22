@@ -44,9 +44,14 @@ gem "twitter-bootstrap-rails"
 gem 'fog', '~> 1.3.1'
 gem 'rmagick'
 gem 'carrierwave'
+gem 'mini_magick'
 
 gem 'devise'
 
+gem 'rails-erd'
+gem 'rspec-rails'
+gem 'pry'
+gem 'factory_girl'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
