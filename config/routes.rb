@@ -6,8 +6,11 @@ Reservester::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'restaurants#index'
 
+  # root to: "main#dashboard", as: "authenticated_root"
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+  get '/dashboard' => 'owners#dashboard'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

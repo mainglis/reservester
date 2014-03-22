@@ -1,0 +1,16 @@
+<h1>Hi, <%= @owner_name %>, you have a new reservation.</h1>
+  <h2>Reservations</h2>
+  <table>
+    <tr>
+      <th>Email</th>
+      <th>Reserved For</th>
+      <th>Message</th>
+      <th></th>
+    </tr>
+
+  <tr>
+    <td> Reservation for #{reservation.restaurant.name} </td>
+    <td><%#= @restaurant.reservations.reserve_on %></td>
+    <td><%#= @restaurant.reservations.message %></td>
+  </tr>
+  </table>

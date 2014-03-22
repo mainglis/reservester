@@ -5,7 +5,9 @@ class ReservationsController < ApplicationController
 		@reservation = @restaurant.reservations.build(reservation_params)
 
 		if @reservation.save
-		  redirect_to @restaurant, :notice => 'Your reservation has been created'
+		  redirect_to @restaurant, :notice => 'Your reservation has been created. Check your email!'
+		  # Tell the ReservationMailer to send an reservation email to the owner after saving
+		  ReservationMailer.reservation_notification(@reservation).deliver
 		else
 		  render 'restaurant/show'
 		end

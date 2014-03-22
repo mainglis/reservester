@@ -9,6 +9,8 @@ Things you may want to cover:
 
 * System dependencies
 
+This app uses the mailcatcher gem. "Simply run gem install mailcatcher then mailcatcher to get started." (from https://github.com/sj26/mailcatcher)
+
 * Configuration
 
 * Database creation
