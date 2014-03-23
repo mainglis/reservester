@@ -19,6 +19,8 @@ Reservester::Application.routes.draw do
     resources :restaurants do
       resources :reservations
     end
+
+    resources :categories
     
   # Example resource route with options:
   #   resources :products do

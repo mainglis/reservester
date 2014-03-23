@@ -7,6 +7,10 @@
 </p>
 <!-- 4. Update the Restaurant Show view to display the Restaurant’s Owner’s name -->
 <p>
+  <strong>Restaurant category:</strong>
+  <%= @category.name %>
+</p>
+<p>
   <strong>Restaurant owner:</strong>
   <%= @restaurant.owner.name %>
 </p>
@@ -25,10 +29,12 @@
           <td><%= reservation.email %></td>
           <td><%= reservation.reserve_on %></td>
           <td><%= reservation.message %></td>
+          <td>
 
     <%= link_to 'Mark as Confirmed', [reservation.restaurant, reservation],
                  method: :delete,
                  data: { confirm: 'Are you sure?' } %>
+          </td>
         
         </tr>
       <%- end %>

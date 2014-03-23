@@ -17,11 +17,6 @@
     <%= f.text_field :name %>
   </div>
 
-<!--   <div class="field">
-    <%#= f.label :owner %><br>
-    <%#= f.text_field :owner %>
-  </div> -->
-
   <div class="field">
     <%= f.label :phone_number %><br>
     <%= f.text_field :phone_number %>
@@ -30,6 +25,11 @@
     <%= f.label :address %><br>
     <%= f.text_field :address %>
   </div>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.select :category, ["Mexican", "American", "Japanese", "Chinese", "Italian", "Irish", "Soul Food", "Coffee", "Wine Bar", "Diner"], {:include_blank => '-- Select One --' }, :required => false %>
+  </div>
+  <!-- <li><%#= f.select :rank_equals, Grantmaker.ranks, :include_blank => true %><br /></li> -->
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>

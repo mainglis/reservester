@@ -72,6 +72,9 @@ Reservester::Application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
+  config.threadsafe!
+  config.dependency_loading = true if $rails_rake_task
+
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
 

@@ -4,8 +4,12 @@ class Restaurant < ActiveRecord::Base
 	mount_uploader :photo, PhotoUploader
 
 	belongs_to :owner
-	# that table needs an owner_id column
+	# when you see belongs_to, means that the table/model you are 
+	# editing will have an id form related to the word that comes after the :
+	# in this case, restaurant table will have owner_id as a field
+
 	has_many :reservations
+	has_and_belongs_to_many :categories
 
 	accepts_nested_attributes_for :reservations
 end

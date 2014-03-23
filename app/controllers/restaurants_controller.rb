@@ -16,6 +16,7 @@ end
 def show
   @restaurant = Restaurant.find params[:id]
   @reservation = Reservation.new
+  @category = Category.all
 
     unless @restaurant.owner == current_owner 
       render "unauthorized"
@@ -25,6 +26,7 @@ end
 def new
 	@restaurant = Restaurant.new
   1.times { @restaurant.reservations.build }
+   # @category = Category.all
 end
 def create
 

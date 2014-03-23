@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'category.rb'
+
+Category.delete_all
+category_list = ["Mexican", "American", "Japanese", "Chinese", "Italian", "Irish", "Soul Food", "Coffee", "Wine Bar", "Diner"]
+category_list.each do |name|
+  Category.create!( name: name )
+end
