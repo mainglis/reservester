@@ -26,7 +26,7 @@ end
 def new
 	@restaurant = Restaurant.new
   1.times { @restaurant.reservations.build }
-   # @category = Category.all
+   @category = Category.all
 end
 def create
 
