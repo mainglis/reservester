@@ -6,7 +6,7 @@ class ReservationsController < ApplicationController
 
 		if @reservation.save
 		  redirect_to @restaurant, :notice => 'Your reservation has been created. Check your email!'
-		  # Tell the ReservationMailer to send an reservation email to the owner after saving
+		  # Tell the ReservationMailer to send an reservation email to the user after saving
 		  ReservationMailer.reservation_notification(@reservation).deliver
 		else
 		  render 'restaurant/show'
@@ -14,7 +14,7 @@ class ReservationsController < ApplicationController
 	end
 
 	def show
-		unless @restaurant.owner == current_owner 
+		unless @restaurant.user == current_user
 	      render "unauthorized"
 	    end
 	end

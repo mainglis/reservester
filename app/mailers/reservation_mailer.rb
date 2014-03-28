@@ -3,10 +3,10 @@ class ReservationMailer < ActionMailer::Base
 
 def reservation_notification(reservation)
 	@reservation = reservation
-	@owner_email = @reservation.restaurant.owner.email
-	@owner_name = @reservation.restaurant.owner.name
+	@user_email = @reservation.restaurant.user.email
+	@user_name = @reservation.restaurant.user.name
 
-	mail(to: @owner_email, subject: "New reservation has been made")
+	mail(to: @user_email, subject: "New reservation has been made")
 end
 
 end

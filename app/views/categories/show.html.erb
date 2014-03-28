@@ -1,0 +1,35 @@
+<!-- Display the list of Restaurants within each Category on the Category Show page -->
+
+<h1>Category Details</h1>
+
+<p>
+  <strong>Category name:</strong>
+  <%= @category.name %>
+</p>
+
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone number</th>
+      <th>Address</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+<!-- get an array of categories, and for each category do category.restaurants -->
+  <tbody>
+      <tr>
+        <td><% @category.restaurants.each do |restaurant| %></td>
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.address %></td>
+        <td><%= restaurant.description %></td>
+<!-- Update the Restaurant Index view to display the thumbnail -->
+        <td><%= link_to 'Show', restaurant %></td>
+<!-- Display the total count of Restaurants within each Category on the link -->
+        <td><%#= link_to 'Show', category %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>

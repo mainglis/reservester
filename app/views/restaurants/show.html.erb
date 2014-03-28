@@ -1,20 +1,53 @@
-<h1>Show!</h1>
-<div class="row">
+<!-- Update the Restaurant Show page to link to the Category Show page for each Category -->
+
+<h1>Restaurant Details</h1>
+<p><%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Destroy', restaurant_path(@restaurant), :method => :delete, :confirm => 'Are you sure that you want to delete this restaurant?' %> | 
+<%#= link_to('Logout', destroy_user_session_path, :method => 'delete') %> 
+<%= link_to 'Back', restaurants_path %>
+</p>
 <p>
   <strong>Name:</strong>
   <%= @restaurant.name %>
 </p>
-<!-- 4. Update the Restaurant Show view to display the Restaurant’s Owner’s name -->
+<!-- 4. Update the Restaurant Show view to display the Restaurant’s user’s name -->
 <p>
   <strong>Restaurant category:</strong>
-  <%= @category.name %>
+  <ul>
+  <% @restaurant.categories_by_name.each do |cat| %>
+    <li><%= cat %></li>
+  <% end %>
+  </ul>
 </p>
 <p>
-  <strong>Restaurant owner:</strong>
-  <%= @restaurant.owner.name %>
+  <strong>Restaurant user:</strong>
+  <%= @restaurant.user.name %>
 </p>
-<!-- If logged in as owner, show reservations -->
-<% if current_owner == @restaurant.owner %>
+<p>
+  <strong>Phone number:</strong>
+  <%= @restaurant.phone_number %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @restaurant.description %>
+</p>
+
+<!-- Update the Restaurant Show view to display the masthead -->
+<p>
+  <strong>Photo:</strong>
+  <!-- <img src="<%= @restaurant.photo.url %>" /> -->
+  <%= image_tag @restaurant.photo.masthead.url if @restaurant.photo? %>
+</p>
+
+
+<!-- If logged in as user, show reservations -->
+<% if current_user == @restaurant.user %>
 <h2>Reservations</h2>
     <table class="table-striped">
       <tr>
@@ -39,31 +72,9 @@
       <%- end %>
     </table>
 <% end %>
-<h2>Become a owner</h2>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @restaurant.phone_number %>
-</p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @restaurant.address %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @restaurant.description %>
-</p>
-
-<!-- Update the Restaurant Show view to display the masthead -->
-<p>
-  <strong>Photo:</strong>
-  <!-- <img src="<%= @restaurant.photo.url %>" /> -->
-  <%= image_tag @restaurant.photo.masthead.url if @restaurant.photo? %>
-</p>
-
-<h1>New Reservation</h1>
+<h2>New Reservation</h2>
 <div>
 <ol>
 <%= form_for([@restaurant, @reservation]) do |f| %>
@@ -108,11 +119,8 @@
 
 
 <!-- <p><img src="http://maps.googleapis.com/maps/api/staticmap?center=New+York,NY&zoom=13&size=600x300&AIzaSyAizj5DwSf-rldrjdmP0pYjaerIaKeyHvI=API_KEY"></p> -->
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Destroy', restaurant_path(@restaurant), :method => :delete, :confirm => 'Are you sure that you want to delete this restaurant?' %> | 
-<%#= link_to('Logout', destroy_user_session_path, :method => 'delete') %> |
-<%= link_to 'Back', restaurants_path %>
 
-<!-- b. the Edit & Destroy paths to only the Restaurant’s Owner -->
-<%#= link_to_if(current_owner == @restaurant.owner) 'Edit', edit_restaurant_path(@restaurant) %> |
-<%#= link_to_if(current_owner == @restaurant.owner) 'Remove', restaurant_path(@restaurant), method: :delete %>
+
+<!-- b. the Edit & Destroy paths to only the Restaurant’s user -->
+<%#= link_to_if(current_user == @restaurant.user) 'Edit', edit_restaurant_path(@restaurant) %> 
+<%#= link_to_if(current_user == @restaurant.user) 'Remove', restaurant_path(@restaurant), method: :delete %>

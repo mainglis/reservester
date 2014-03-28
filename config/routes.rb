@@ -1,5 +1,5 @@
 Reservester::Application.routes.draw do
-  devise_for :owners
+  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -10,17 +10,29 @@ Reservester::Application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-  get '/dashboard' => 'owners#dashboard'
+  get '/dashboard' => 'users#dashboard'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
     resources :restaurants do
-      resources :reservations
+      resources :reservations 
+    end
+
+    resources :restaurants do 
+      resources :stars
     end
 
     resources :categories
+
+    # This doesn't work!
+    # resources :stars do 
+    #   get 'new' #new /restaurants/:id/stars/new
+    #   get 'create' #create /restaurants/:id/stars
+    # end
+
+
     
   # Example resource route with options:
   #   resources :products do

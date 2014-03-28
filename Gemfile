@@ -53,6 +53,8 @@ gem 'rspec-rails'
 gem 'pry'
 gem 'factory_girl'
 
+gem 'chosen-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

@@ -21,7 +21,7 @@ end
 
 
 test "should get create" do
-    get :create, restaurant: {name: "Piccos", owner_id: "11"}
+    get :create, restaurant: {name: "Piccos", user_id: "11"}
       # @current_user_id} is the ending if you uncomment the def Setup metnod above
     assert_response :redirect
   end

@@ -1,24 +1,27 @@
 class RestaurantsController < ApplicationController
-# 1. Update the Restaurant New & Create actions to require a currently logged in Owner.
-# before_filter :owner_signed_in?
-# 2. Update the Restaurant Create action to create a Restaurant owned by the currently logged in Owner
-before_filter :authenticate_owner!, only: [:create, :update], except: [:show, :index]
-# 3. Update the Restaurant Edit, Update and Destroy actions to require the currently logged in Owner to be the Restaurant’s Owner
-# before_filter :current_owner, only: [:edit, :update, :destroy]
+# 1. Update the Restaurant New & Create actions to require a currently logged in user.
+# before_filter :user_signed_in?
+# 2. Update the Restaurant Create action to create a Restaurant owned by the currently logged in user
+before_filter :authenticate_user!, only: [:create, :update], except: [:show, :index]
+# 3. Update the Restaurant Edit, Update and Destroy actions to require the currently logged in user to be the Restaurant’s user
+# before_filter :current_user, only: [:edit, :update, :destroy]
 
   # From SIB fall 2013...
-  # before_filter :authenticate_owner!, :except => [:index, :show]
-  # before_filter :require_restaurent_owner_match!, :only => [:edit, :update, :destroy]
+  # before_filter :authenticate_user!, :except => [:index, :show]
+  # before_filter :require_restaurent_user_match!, :only => [:edit, :update, :destroy]
 
 def index
 	@restaurants = Restaurant.all
+  @categories = Category.all
 end
 def show
   @restaurant = Restaurant.find params[:id]
   @reservation = Reservation.new
-  @category = Category.all
+  @reservation.restaurant = @restaurant
+  @category = @restaurant.categories
+  # @category = Category.all
 
-    unless @restaurant.owner == current_owner 
+    unless @restaurant.user == current_user 
       render "unauthorized"
     end
 end
@@ -26,12 +29,12 @@ end
 def new
 	@restaurant = Restaurant.new
   1.times { @restaurant.reservations.build }
-   @category = Category.all
 end
 def create
 
   @restaurant = Restaurant.new restaurant_params
-  @restaurant.owner = current_owner
+  @restaurant.user = current_user
+  #@restaurant.category = 
 
     if @restaurant.save
         redirect_to @restaurant
@@ -41,6 +44,8 @@ def create
 end
 def edit
 	@restaurant = Restaurant.find params[:id]
+  # OLD @restaurant.category = @category
+  @category = @restaurant.categories
 end
 def update
 	@restaurant = Restaurant.find params[:id]
@@ -65,7 +70,7 @@ params.require(:restaurant).permit!
 #   :description, 
 #   :phone_number, 
 #   :address, 
-#   :owner_id, 
+#   :user_id, 
 #   :photo,
 #   :reservations => [
 #     :reserve_on, 

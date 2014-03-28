@@ -25,10 +25,15 @@
     <%= f.label :address %><br>
     <%= f.text_field :address %>
   </div>
+
   <div class="field">
-    <%= f.label :category %><br>
-    <%= f.select :category, ["Mexican", "American", "Japanese", "Chinese", "Italian", "Irish", "Soul Food", "Coffee", "Wine Bar", "Diner"], {:include_blank => '-- Select One --' }, :required => false %>
-  </div>
+    <% hidden_field_tag "restaurant[category_ids][]", nil %>
+    <% Category.all.each do |category| %>
+      <%= check_box_tag "restaurant[category_ids][]", category.id, @restaurant.category_ids.include?(category.id), id: dom_id(category) %>
+      <%= label_tag dom_id(category), category.name %><br>
+    <% end %>
+  <div>
+
   <!-- <li><%#= f.select :rank_equals, Grantmaker.ranks, :include_blank => true %><br /></li> -->
   <div class="field">
     <%= f.label :description %><br>

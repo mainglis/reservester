@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140323145746) do
+ActiveRecord::Schema.define(version: 20140327013449) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -26,26 +26,6 @@ ActiveRecord::Schema.define(version: 20140323145746) do
 
   add_index "categories_restaurants", ["category_id", "restaurant_id"], name: "index_categories_restaurants_on_category_id_and_restaurant_id", using: :btree
   add_index "categories_restaurants", ["restaurant_id", "category_id"], name: "index_categories_restaurants_on_restaurant_id_and_category_id", using: :btree
-
-  create_table "owners", force: true do |t|
-    t.string   "name"
-    t.string   "email_old"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-  end
-
-  add_index "owners", ["email"], name: "index_owners_on_email", unique: true, using: :btree
-  add_index "owners", ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true, using: :btree
 
   create_table "reservations", force: true do |t|
     t.string   "email"
@@ -64,7 +44,40 @@ ActiveRecord::Schema.define(version: 20140323145746) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo"
-    t.integer  "owner_id"
+    t.integer  "user_id"
   end
+
+  create_table "star_restaurants", force: true do |t|
+    t.integer  "restaurant_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stars", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email_old"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email",                  default: "",       null: false
+    t.string   "encrypted_password",     default: "",       null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,        null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "role",                   default: "patron"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

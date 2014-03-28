@@ -1,0 +1,23 @@
+<!-- Update the Restaurant Index to display links to each Category
+Display the total count of Restaurants within each Category on the link
+ -->
+
+ <!-- Create a Category Index page to show links to all Categorie -->
+
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= link_to 'Show', category %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

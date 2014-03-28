@@ -20,14 +20,36 @@
         <td><%= restaurant.description %></td>
 <!-- Update the Restaurant Index view to display the thumbnail -->
         <td><%= link_to 'Show', restaurant %></td>
+<!-- Display the total count of Restaurants within each Category on the link -->
+        <td><%#= link_to 'Show', category %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!-- Display the total count of Restaurants within each Category on the link -->
+
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= link_to 'Show', category %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<!-- Update the views to only display to logged in Owners: a. the New Restaurant path to any Owner -->
-<% if owner_signed_in? %> 
+<!-- Update the views to only display to logged in users: a. the New Restaurant path to any user -->
+<% if user_signed_in? %> 
   <%= link_to 'New Restaurant', new_restaurant_path %>
 <% end %> 
 
