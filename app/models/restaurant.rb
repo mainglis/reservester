@@ -11,8 +11,7 @@ class Restaurant < ActiveRecord::Base
 	has_many :reservations
 	has_and_belongs_to_many :categories
 
-	has_many :star_restaurants
-	# has_many :starred_by, through: :star_restaurants, source: :user
+	has_many :stars
 	has_many :starred_by, through: :stars, source: :user
 
 	def categories_by_name

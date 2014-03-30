@@ -19,11 +19,16 @@ def show
   @reservation = Reservation.new
   @reservation.restaurant = @restaurant
   @category = @restaurant.categories
-  # @category = Category.all
 
     unless @restaurant.user == current_user 
       render "unauthorized"
     end
+  # explain this code
+  @starred = current_user.stars.exists?(:restaurant_id => @restaurant.id)
+end
+
+def star
+  
 end
 
 def new
@@ -34,7 +39,6 @@ def create
 
   @restaurant = Restaurant.new restaurant_params
   @restaurant.user = current_user
-  #@restaurant.category = 
 
     if @restaurant.save
         redirect_to @restaurant
@@ -42,11 +46,13 @@ def create
       render action: 'new'
     end
 end
+
 def edit
 	@restaurant = Restaurant.find params[:id]
   # OLD @restaurant.category = @category
   @category = @restaurant.categories
 end
+
 def update
 	@restaurant = Restaurant.find params[:id]
 

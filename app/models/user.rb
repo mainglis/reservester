@@ -6,10 +6,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :restaurants
 
-  has_many :star_restaurants
-  #has_many :stars, through: :star_restaurants
-
-  has_many :starred_restaurants, through: :stars
+  has_many :stars
+  has_many :starred_restaurants, through: :stars, source: :restaurant
 
   
   def owner?

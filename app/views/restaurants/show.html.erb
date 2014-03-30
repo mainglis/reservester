@@ -10,6 +10,15 @@
   <strong>Name:</strong>
   <%= @restaurant.name %>
 </p>
+<p>
+  <strong>Stars:</strong>
+  <%= @restaurant.stars.count %>
+  <% if @starred %>
+    <%= link_to "Unstar", star_restaurant_path(type: "unstar"), method: :put %>
+  <% else @starred %>
+    <%= link_to "Star", star_restaurant_path(type: "star"), method: :put %>
+  <% end %>
+</p>
 <!-- 4. Update the Restaurant Show view to display the Restaurant’s user’s name -->
 <p>
   <strong>Restaurant category:</strong>

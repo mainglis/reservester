@@ -21,7 +21,8 @@ Reservester::Application.routes.draw do
     end
 
     resources :restaurants do 
-      resources :stars
+      resources :stars, :only => ['new', 'create']
+      put :star, on: :member
     end
 
     resources :categories
