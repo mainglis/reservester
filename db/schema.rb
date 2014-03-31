@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140330160355) do
+ActiveRecord::Schema.define(version: 20140331024554) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -34,7 +34,10 @@ ActiveRecord::Schema.define(version: 20140330160355) do
     t.integer  "restaurant_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
+
+  add_index "reservations", ["status"], name: "index_reservations_on_status", using: :btree
 
   create_table "restaurants", force: true do |t|
     t.string   "name"
@@ -45,7 +48,37 @@ ActiveRecord::Schema.define(version: 20140330160355) do
     t.datetime "updated_at"
     t.string   "photo"
     t.integer  "user_id"
+    t.time     "monday_open_at"
+    t.time     "monday_close_at"
+    t.time     "tuesday_open_at"
+    t.time     "tuesday_close_at"
+    t.time     "wednesday_open_at"
+    t.time     "wednesday_close_at"
+    t.time     "thursday_open_at"
+    t.time     "thursday_close_at"
+    t.time     "friday_open_at"
+    t.time     "friday_close_at"
+    t.time     "saturday_open_at"
+    t.time     "saturday_close_at"
+    t.time     "sunday_open_at"
+    t.time     "sunday_close_at"
+    t.integer  "max_reservations"
   end
+
+  add_index "restaurants", ["friday_close_at"], name: "index_restaurants_on_friday_close_at", using: :btree
+  add_index "restaurants", ["friday_open_at"], name: "index_restaurants_on_friday_open_at", using: :btree
+  add_index "restaurants", ["monday_close_at"], name: "index_restaurants_on_monday_close_at", using: :btree
+  add_index "restaurants", ["monday_open_at"], name: "index_restaurants_on_monday_open_at", using: :btree
+  add_index "restaurants", ["saturday_close_at"], name: "index_restaurants_on_saturday_close_at", using: :btree
+  add_index "restaurants", ["saturday_open_at"], name: "index_restaurants_on_saturday_open_at", using: :btree
+  add_index "restaurants", ["sunday_close_at"], name: "index_restaurants_on_sunday_close_at", using: :btree
+  add_index "restaurants", ["sunday_open_at"], name: "index_restaurants_on_sunday_open_at", using: :btree
+  add_index "restaurants", ["thursday_close_at"], name: "index_restaurants_on_thursday_close_at", using: :btree
+  add_index "restaurants", ["thursday_open_at"], name: "index_restaurants_on_thursday_open_at", using: :btree
+  add_index "restaurants", ["tuesday_close_at"], name: "index_restaurants_on_tuesday_close_at", using: :btree
+  add_index "restaurants", ["tuesday_open_at"], name: "index_restaurants_on_tuesday_open_at", using: :btree
+  add_index "restaurants", ["wednesday_close_at"], name: "index_restaurants_on_wednesday_close_at", using: :btree
+  add_index "restaurants", ["wednesday_open_at"], name: "index_restaurants_on_wednesday_open_at", using: :btree
 
   create_table "stars", force: true do |t|
     t.datetime "created_at"

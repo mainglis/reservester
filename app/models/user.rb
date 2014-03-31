@@ -4,14 +4,13 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :restaurants
+  has_many :restaurants, through: :reservations
 
   has_many :stars
   has_many :starred_restaurants, through: :stars, source: :restaurant
 
-  
   def owner?
-  	if user.role == 'owner'
+  	if current_user.role == 'owner'
   		return true
   	else
   		return false 
@@ -19,7 +18,7 @@ class User < ActiveRecord::Base
 	end
 
   def patron?
-    if user.role == 'patron'
+    if current_user.role == 'patron'
       return true
     else
       return false
@@ -27,3 +26,18 @@ class User < ActiveRecord::Base
   end
 
 end
+
+# This is the right way to do it
+# def owner?
+#   isOwner = false
+#   if self.role == "owner"
+#     isOwner = true
+#   end
+# end
+
+# def self.patron?
+#   isPatron = false
+#   if self.role == "patron"
+#     isPatron = true
+#   end
+# end

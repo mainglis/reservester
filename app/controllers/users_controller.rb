@@ -2,8 +2,13 @@ class UsersController < ApplicationController
 
 before_filter :authenticate_user!
 
-def dashboard
+# Need to define owner_dashboard 
+# Need to define patron_dashboard
+def owner_dashboard
 end
+
+def patron_dashboard
+end	
 
 # Create a method on User named ‘owner?’ and return true 
 # when the User has the ‘owner’ role, otherwise return false

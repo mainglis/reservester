@@ -12,6 +12,7 @@
 </p>
 <p>
   <strong>Stars:</strong>
+  <!-- Display the total count of starred_by on the Restaurant page. -->
   <%= @restaurant.stars.count %>
   <% if @starred %>
     <%= link_to "Unstar", star_restaurant_path(type: "unstar"), method: :put %>

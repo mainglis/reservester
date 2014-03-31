@@ -3,7 +3,9 @@ class Restaurant < ActiveRecord::Base
 
 	mount_uploader :photo, PhotoUploader
 
-	belongs_to :user
+	# belongs_to :user
+	has_many :users, as: :owner
+	has_many :users, through: :reservations
 	# when you see belongs_to, means that the table/model you are 
 	# editing will have an id form related to the word that comes after the :
 	# in this case, restaurant table will have user_id as a field
