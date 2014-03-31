@@ -4,7 +4,7 @@ class RestaurantsController < ApplicationController
 # 2. Update the Restaurant Create action to create a Restaurant owned by the currently logged in user
 before_filter :authenticate_user!, only: [:create, :update], except: [:show, :index]
 # 3. Update the Restaurant Edit, Update and Destroy actions to require the currently logged in user to be the Restaurant’s user
-# before_filter :current_user, only: [:edit, :update, :destroy]
+before_filter :current_user, only: [:edit, :update, :destroy]
 
   # From SIB fall 2013...
   # before_filter :authenticate_user!, :except => [:index, :show]
@@ -28,7 +28,16 @@ def show
 end
 
 def star
-  
+  type = params[:type]
+  restaurant = Restaurant.find(params[:id])
+
+  if type == "star"
+    current_user.stars.create(restaurant: restaurant)
+    redirect_to :back
+  else
+    current_user.stars.where(:restaurant_id => restaurant.id).destroy_all
+    redirect_to :back
+  end 
 end
 
 def new
@@ -84,6 +93,11 @@ params.require(:restaurant).permit!
 #     :email ]
 #   )
 end
+
+# def current_user
+#   @restaurant.user == current_user
+#   redirect_to(root_url) unless current_user?(@owner)
+# end
 
 # def photo
 #   @restaurant

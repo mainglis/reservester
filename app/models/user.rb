@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   
   def owner?
-  	if user.role == 'owner'
+  	if current_user.role == 'owner'
   		return true
   	else
   		return false 
@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 	end
 
   def patron?
-    if user.role == 'patron'
+    if current_user.role == 'patron'
       return true
     else
       return false
