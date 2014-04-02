@@ -4,7 +4,7 @@ class RestaurantsController < ApplicationController
 # 2. Update the Restaurant Create action to create a Restaurant owned by the currently logged in user
 before_filter :authenticate_user!, only: [:create, :update], except: [:show, :index]
 # 3. Update the Restaurant Edit, Update and Destroy actions to require the currently logged in user to be the Restaurant’s user
-before_filter :current_user, only: [:edit, :update, :destroy]
+before_action :ensure_user_is_owner, only: [:edit, :update, :destroy]
 
   # From SIB fall 2013...
   # before_filter :authenticate_user!, :except => [:index, :show]
@@ -19,10 +19,14 @@ def show
   @reservation = Reservation.new
   @reservation.restaurant = @restaurant
   @category = @restaurant.categories
+  # @categories_by_name = @restaurant.categories_by_name
 
-    unless @restaurant.user == current_user 
-      render "unauthorized"
-    end
+    # unless @restaurant.user == current_user 
+    # # unless @restaurant.owner == current_user
+    #   render "unauthorized"
+    # end
+    # This is same as the unless
+    # @restaraunt = current_user.restaurants.find(params[:id])
   # explain this code
   @starred = current_user.stars.exists?(:restaurant_id => @restaurant.id)
 end
@@ -77,6 +81,13 @@ def destroy
     redirect_to restaurants_path
 end
 private
+
+def ensure_user_is_owner
+  if user_signed_in 
+    current_user.owner?
+  end
+  # current_user.try(:owner?)
+end
 
 def restaurant_params
 params.require(:restaurant).permit!

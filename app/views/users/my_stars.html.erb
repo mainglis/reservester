@@ -1,0 +1,20 @@
+<h1>Welcome to the my stars list!</h1>
+
+<!-- displays the list of Restaurants that a User has Starred -->
+
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th>Name of Restaurant</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @starred.each do |star| %>
+      <tr>
+      <!-- This is only possible because of your restaurant has_many stars :through reservations -->
+        <td><%= star.restaurant.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

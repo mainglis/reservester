@@ -1,2 +1,27 @@
 
-<h1>Welcome to the dashboard!</h1>
+<h1>Welcome to the Owners dashboard!</h1>
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone number</th>
+      <th>Address</th>
+      <th>Description</th>
+      <th>Stars</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.phone_number %></td>
+        <td><%= restaurant.address %></td>
+        <td><%= restaurant.description %></td>
+        <td><%#= link_to 'Show', restaurant %></td>
+        <td><%= restaurant.stars.count %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
