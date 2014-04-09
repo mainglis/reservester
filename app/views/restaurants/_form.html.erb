@@ -32,9 +32,8 @@
       <%= check_box_tag "restaurant[category_ids][]", category.id, @restaurant.category_ids.include?(category.id), id: dom_id(category) %>
       <%= label_tag dom_id(category), category.name %><br>
     <% end %>
-  <div>
-
-  <!-- <li><%#= f.select :rank_equals, Grantmaker.ranks, :include_blank => true %><br /></li> -->
+</div>
+ 
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
@@ -45,9 +44,76 @@
     <%= f.file_field :photo %>
     <%= f.hidden_field :photo_cache %>
   </div>
+  <br>
+
+<table class="table-striped">
+<thead>
+  <tr>
+    <th>Day</th>
+    <th>Open Time</th>
+    <th>Close Time</th>
+    <th>Checkbox</th>
+    <th>Max Reservations</th>
+  </tr>
+</thead>
+
+<tbody>
+    <tr>
+      <td><%= f.label "Monday" %></td>
+      <!-- If !monday.closed, then empty eeverything - unless !  -->
+      <td><%= f.time_select :monday_close_at %></td>
+      <td><%= f.time_select :monday_open_at %></td>
+      <td><%= f.check_box :monday_closed %><b>Closed</b></td>
+      <td><%= f.text_field :max_reservations %>
+    </tr>
+    <tr>
+      <td><%= f.label "Tuesday" %></td>
+      <td><%= f.time_select :tuesday_close_at %></td>
+      <td><%= f.time_select :tuesday_open_at %></td>
+      <td><%= f.check_box :tuesday_closed %><b>Closed</b></td>
+      <td><%= f.text_field :max_reservations %>
+    </tr>
+    <tr>
+      <td><%= f.label "Wednesday" %></td>
+      <td><%= f.time_select :wednesday_close_at %></td>
+      <td><%= f.time_select :wednesday_open_at %></td>
+      <td><%= f.check_box :wednesday_closed %><b>Closed</b></td>
+      <td><%= f.text_field :max_reservations %>
+    </tr>
+    <tr>
+      <td><%= f.label "Thursday" %></td>
+      <td><%= f.time_select :thursday_close_at %></td>
+      <td><%= f.time_select :thursday_open_at %></td>
+      <td><%= f.check_box :thursday_closed %><b>Closed</b></td>
+      <td><%= f.text_field :max_reservations %>
+    </tr>
+    <tr>
+      <td><%= f.label "Friday" %></td>
+      <td><%= f.time_select :friday_close_at %></td>
+      <td><%= f.time_select :friday_open_at %></td>
+      <td><%= f.check_box :friday_closed %><b>Closed</b></td>
+      <td><%= f.text_field :max_reservations %>
+    </tr>
+    <tr>
+      <td><%= f.label "Saturday" %></td>
+      <td><%= f.time_select :saturday_close_at %></td>
+      <td><%= f.time_select :saturday_open_at %></td>
+      <td><%= f.check_box :saturday_closed %><b>Closed</b></td>
+      <td><%= f.text_field :max_reservations %>
+    </tr>
+    <tr>
+      <td><%= f.label "Sunday" %></td>
+      <td><%= f.time_select :sunday_close_at %></td>
+      <td><%= f.time_select :sunday_open_at %></td>
+      <td><%= f.check_box :sunday_closed %><b>Closed</b></td>
+      <td><%= f.text_field :max_reservations %>
+    </tr>
+</tbody>
+</table>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
 
 

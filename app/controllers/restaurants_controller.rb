@@ -49,10 +49,39 @@ def new
   1.times { @restaurant.reservations.build }
 end
 def create
+# ASK: how do you pull out the parameter value associated with the form?
+  # monday_closed = Restaurant.find(params[:monday_closed])
+  puts "ggggggggggg      #{params[:monday_closed]}"
+  # puts "#{params[:name]}"
+
+  # if monday_closed = 1
+  #   monday_open_at && monday_close_at == 'null'
+  # else
+  # end 
+  # if tuesday_closed
+  #   tuesday_open_at && tuesday_close_at == 'null'
+  # else
+  # end 
+  # if wednesday_closed
+  #   wednesday_open_at && wednesday_close_at == 'null'
+  # else
+  # end 
+  # if thursday_closed
+  #   thursday_open_at && thursday_close_at == 'null'
+  # else
+  # end 
+  # if friday_closed
+  #   monday_open_at && monday_close_at == 'null'
+  # else
+  # end 
+  # if monday_closed
+  #   monday_open_at && monday_close_at == 'null'
+  # else
+  # end 
 
   @restaurant = Restaurant.new restaurant_params
-  @restaurant.user = current_user
-
+  # @restaurant.user = cur{rent_user
+  
     if @restaurant.save
         redirect_to @restaurant
     else
@@ -80,10 +109,11 @@ def destroy
     @restaurant.destroy
     redirect_to restaurants_path
 end
+
 private
 
 def ensure_user_is_owner
-  if user_signed_in 
+  if user_signed_in?
     current_user.owner?
   end
   # current_user.try(:owner?)

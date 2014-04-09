@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :restaurants
+  has_many :restaurants, through: :reservations
 
   has_many :stars
   has_many :starred_restaurants, through: :stars, source: :restaurant

@@ -17,6 +17,8 @@ class Restaurant < ActiveRecord::Base
 	def categories_by_name
 		categories.map(&:name)
 	end
-
+	def mapaddress
+    	address.split(" ").split(",").join("+")
+	end
 	accepts_nested_attributes_for :reservations
 end

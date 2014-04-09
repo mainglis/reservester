@@ -119,15 +119,13 @@
       <%= f.text_field :message %>
     </div>
   </div>
-
+  <br>
   <div class="control-group">
     <%= f.submit :class => 'btn' %>
   </div>
 <% end %>
-
-
-
-<!-- <p><img src="http://maps.googleapis.com/maps/api/staticmap?center=New+York,NY&zoom=13&size=600x300&AIzaSyAizj5DwSf-rldrjdmP0pYjaerIaKeyHvI=API_KEY"></p> -->
+<br>
+<img width="600px" height="300px" src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @restaurant.mapaddress %>&zoom=13&size=600x300&AIzaSyAYcOzDvlLYBgLVbXo_BA2K0IojKU_ItoQ=API_KEYs&markers=color:red%7Clabel:A%7C<%= @restaurant.mapaddress %>&sensor=false">
 
 
 <!-- b. the Edit & Destroy paths to only the Restaurant’s user -->
