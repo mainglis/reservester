@@ -4,6 +4,7 @@ class Reservation < ActiveRecord::Base
 	validate :within_max_reservations, on: :create
 	# validates :in_schedule, on: :create
 	belongs_to :restaurant
+	has_many :users, through: :submitted_reservations
 end
 
 # A Reservation does not already exist for the user for the same Restaurant for the same day

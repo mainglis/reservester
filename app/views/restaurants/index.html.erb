@@ -1,6 +1,6 @@
 <h1>Welcome to Reservester!</h1>
-
-<table class="table-striped">
+<div class="row well">
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -26,10 +26,11 @@
     <% end %>
   </tbody>
 </table>
-
+</div>
 <!-- Display the total count of Restaurants within each Category on the link -->
-
-<table class="table-striped">
+<div class="row">
+<div class="well col-md-2">
+<table class="table">
   <thead>
     <tr>
       <th>Category</th>
@@ -46,11 +47,15 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
+</div>
+</div>
 <!-- Update the views to only display to logged in users: a. the New Restaurant path to any user -->
+<div class="row">
+<div class="well">
 <% if user_signed_in? %> 
   <%= link_to 'New Restaurant', new_restaurant_path %>
 <% end %> 
+</div>
+</div>
 
 

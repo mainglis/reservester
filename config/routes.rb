@@ -1,10 +1,16 @@
 Reservester::Application.routes.draw do
-  devise_for :users
+  devise_for :users do 
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'restaurants#index'
+
+  # devise_for :users do
+  #   get '/users/sign_out' => 'devise/sessions#destroy'   
+  # end
 
   # root to: "main#dashboard", as: "authenticated_root"
 
@@ -27,6 +33,8 @@ Reservester::Application.routes.draw do
     end
 
     resources :categories
+
+    resource :reviews
 
     # This doesn't work!
     # resources :stars do 

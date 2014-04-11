@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :stars
   has_many :starred_restaurants, through: :stars, source: :restaurant
+  has_many :reservations, through: :submitted_reservations
 
   
   def owner?

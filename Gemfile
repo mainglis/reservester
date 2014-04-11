@@ -55,6 +55,8 @@ gem 'factory_girl'
 
 gem 'chosen-rails'
 
+gem 'google-api-client'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

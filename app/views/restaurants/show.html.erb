@@ -72,7 +72,10 @@
           <td><%= reservation.message %></td>
           <td>
 
-    <%= link_to 'Mark as Confirmed', [reservation.restaurant, reservation],
+    <%= link_to 'Approve', [reservation.restaurant, reservation],
+                 method: :delete,
+                 data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Reject', [reservation.restaurant, reservation],
                  method: :delete,
                  data: { confirm: 'Are you sure?' } %>
           </td>
